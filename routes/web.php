@@ -18,7 +18,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 Route::get('/', HomeController::class);
 
-Route::controller(CursoController::class)->Group(function(){
+/*Route::controller(CursoController::class)->Group(function(){
     Route::get('cursos', 'index')->name('cursos.index');
     Route::get('cursos/create', 'create')->name('cursos.create');
     Route::post('cursos', 'store')->name('cursos.store');
@@ -27,5 +27,13 @@ Route::controller(CursoController::class)->Group(function(){
     Route::put('cursos/{curso}', 'update')->name('cursos.update');//metodo para actualizar
     Route::delete('cursos/{curso}','destroy')->name('cursos.destroy');//metodo para actualizar
 });
+*/
 
+
+//Agrupar rutas con resource
+Route::resource('cursos', CursoController::class);
+
+
+//Route::resource('asignaturas', CursoController::class)->parameters(['asignaturas' => 'curso'])->names('cursos');//parameters para indicar que asignaturas ira como variable curso
+//names para no haya conflicto en las vistas cuando llamamos a las rutas con curso.-----
 
