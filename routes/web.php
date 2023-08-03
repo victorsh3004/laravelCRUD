@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursoController;
 use PHPUnit\Framework\Attributes\Group;
 
+use App\Mail\ContactanosMailable;
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,3 +42,12 @@ Route::resource('cursos', CursoController::class);
             //url    nombre de la vista
 Route::view('nosotros', 'nosotros')->name('nosotros'); 
 // Solo lo utilizamos para mostrar contenido estatico, por lo que no nos vamos a conectar con la BD, simplemente vamos a mostrar una vista
+
+
+Route::get('contactanos', function(){
+    $correo = new ContactanosMailable;
+
+    Mail::to('victor.sh.3004@gmail.com')->send($correo);
+
+    return "Mensaje enviado";
+});
