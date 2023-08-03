@@ -42,17 +42,23 @@ class CursoController extends Controller
         */
         
         $curso  = Curso::create($request->all());//salva el registro en la DB con los datos del formulario, menos la propiedad _token
-
+        
         return redirect()->route('cursos.show', $curso);//Le mandamos el objeto donde esta incluido el id, laravel busca el id y lo utiliza
         
     }
 
+/*
     public function show($id){
 
         $curso = Curso::find($id);
         //return $curso;
 
         return view('cursos.show', ['curso' => $curso]);  
+    }
+*/
+
+    public function show(Curso $curso){
+        return view('cursos.show', compact('curso'));
     }
 
     /*public function edit($id){

@@ -16,7 +16,7 @@ use PHPUnit\Framework\Attributes\Group;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 /*Route::controller(CursoController::class)->Group(function(){
     Route::get('cursos', 'index')->name('cursos.index');
@@ -36,4 +36,7 @@ Route::resource('cursos', CursoController::class);
 
 //Route::resource('asignaturas', CursoController::class)->parameters(['asignaturas' => 'curso'])->names('cursos');//parameters para indicar que asignaturas ira como variable curso
 //names para no haya conflicto en las vistas cuando llamamos a las rutas con curso.-----
-
+            
+            //url    nombre de la vista
+Route::view('nosotros', 'nosotros')->name('nosotros'); 
+// Solo lo utilizamos para mostrar contenido estatico, por lo que no nos vamos a conectar con la BD, simplemente vamos a mostrar una vista

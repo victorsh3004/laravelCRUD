@@ -14,4 +14,10 @@ class Curso extends Model
     //para no escribir todos los campos
     //protected $guarded = ['status'];//ignoramos los campos protegidos y colocar los campos permitidos
     protected $guarded = [];//si no tenemos un campo protegido lo dejamos vacio
+
+    public function getRouteKeyName()
+    {
+        //return $this->getKeyName();
+        return 'slug';
+    }
 }
