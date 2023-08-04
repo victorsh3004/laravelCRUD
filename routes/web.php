@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactanosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursoController;
@@ -43,7 +44,7 @@ Route::resource('cursos', CursoController::class);
 Route::view('nosotros', 'nosotros')->name('nosotros'); 
 // Solo lo utilizamos para mostrar contenido estatico, por lo que no nos vamos a conectar con la BD, simplemente vamos a mostrar una vista
 
-
+/* //Para enviar correo
 Route::get('contactanos', function(){
     $correo = new ContactanosMailable;
 
@@ -51,3 +52,9 @@ Route::get('contactanos', function(){
 
     return "Mensaje enviado";
 });
+*/
+
+
+Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
+
+Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');
